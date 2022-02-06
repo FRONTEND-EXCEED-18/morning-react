@@ -1,36 +1,27 @@
-import { useState } from "react/cjs/react.development"
+import React from "react"
+import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import "./App.css"
-import Counter from "./components/Counter"
-import Logic from "./components/Logic"
-import TestRef from "./components/TestRef"
-import AuthProvider from "./contexts/AuthProvider"
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
+import Id from "./pages/Id"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 function App() {
-  const header = <h1>hello</h1>
+  const location = useLocation()
 
-  const num = 1
-
-  const [show, setShow] = useState(true)
-
-  const toggle = () => {
-    setShow((show) => !show)
-  }
+  console.log(location)
 
   return (
-    <div>
-      {/* {header}
-      {num}
-      <button onClick={toggle}>toggle</button> */}
-      <AuthProvider>
-        <Logic title={"วัยรุ่นโกโกวา"} />
-        <TestRef />
-        <Counter />
-      </AuthProvider>
-      {/* <Logic title={""} />
-      <Logic title={null} />
-      <Logic title={undefined} />
-      <Logic title={false} />
-      <Logic title={0} /> */}
+    <div className="App">
+      <Navbar />
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/id/:name" element={<Id />} />
+        <Route path="*" element={<Navigate to="home" />} />
+      </Routes>
     </div>
   )
 }

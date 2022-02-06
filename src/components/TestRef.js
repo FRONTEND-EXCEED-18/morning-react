@@ -6,12 +6,12 @@ const TestRef = () => {
   const formRef = useRef()
   const [state, setState] = useState("")
 
-  const { user, setUser } = useAuth()
+  const { user, setUserInfo, logout } = useAuth()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const input = formRef.current.querySelector("input")
-    setUser(input.value)
+    setUserInfo(input.value)
     input.value = ""
   }
 
@@ -22,6 +22,7 @@ const TestRef = () => {
         <input value={state} onChange={(e) => setState(e.target.value)} />
         <button type="submit">click me</button>
       </form>
+      <button onClick={logout}>logout</button>
     </div>
   )
 }
