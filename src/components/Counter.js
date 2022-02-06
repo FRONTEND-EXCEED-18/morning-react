@@ -6,22 +6,23 @@ const Counter = () => {
   const [value, setValue] = useState("")
 
   const { user } = useAuth()
-  // useEffect(() => {
-  //   console.log(num)
-  // }, [num])
+
+  useEffect(() => {
+    console.log(num)
+  }, [num])
 
   console.log(user)
 
-  // useEffect(() => {
-  //   const counter = setInterval(() => {
-  //     setNum((oldNum) => oldNum + 1)
-  //     console.log("interval")
-  //   }, 1000)
+  useEffect(() => {
+    const counter = setInterval(() => {
+      setNum((oldNum) => oldNum + 1)
+      console.log("interval")
+    }, 1000)
 
-  //   return () => {
-  //     clearInterval(counter)
-  //   }
-  // }, [])
+    return () => {
+      clearInterval(counter)
+    }
+  }, [])
 
   return (
     <div className="counter">
