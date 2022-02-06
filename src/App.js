@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react/cjs/react.development"
+import "./App.css"
+import Counter from "./components/Counter"
+import Logic from "./components/Logic"
+import TestRef from "./components/TestRef"
+import AuthProvider from "./contexts/AuthProvider"
 
 function App() {
+  const header = <h1>hello</h1>
+
+  const num = 1
+
+  const [show, setShow] = useState(true)
+
+  const toggle = () => {
+    setShow((show) => !show)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* {header}
+      {num}
+      <button onClick={toggle}>toggle</button> */}
+      <AuthProvider>
+        <Logic title={"วัยรุ่นโกโกวา"} />
+        <TestRef />
+        <Counter />
+      </AuthProvider>
+      {/* <Logic title={""} />
+      <Logic title={null} />
+      <Logic title={undefined} />
+      <Logic title={false} />
+      <Logic title={0} /> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
